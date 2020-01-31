@@ -1,0 +1,31 @@
+<mat-card *ngIf="pokemon" class="pokemon-card">
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="50px">
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
+        <img src="../../../assets/img/official-artwork/{{ pokemon.id }}.png" class="logo-pokemon"/>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        {{ pokemon.name }}
+        <button (click)="pokemonAudio.play()" mat-icon-button>
+          <mat-icon>play_circle_outline</mat-icon>
+        </button>
+        <audio #pokemonAudio src="../../../assets/audio/{{ pokemon.id }}.mp3" autoplay></audio>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-chip-list *ngFor="let type of pokemon.types">
+          <mat-chip>{{ type }}</mat-chip>
+        </mat-chip-list>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        Taille: {{ pokemon.height | number:'1.1-1'}} m
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <div>No. {{ ("000"+pokemon.id).slice(-3) }}</div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        Poids: {{ pokemon.weight | number:'1.1-1'}} kg
+      </mat-grid-tile>
+    </mat-grid-list>
+    <p>{{ pokemon.description }}</p>
+  </mat-card-content>
+</mat-card>

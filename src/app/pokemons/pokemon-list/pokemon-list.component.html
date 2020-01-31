@@ -1,0 +1,11 @@
+<mat-form-field class="example-full-width">
+  <input matInput #searchBox id="search-box" placeholder="Search Pokemon" value="" (input)="search(searchBox.value)">
+</mat-form-field>
+<mat-nav-list class="listeE" infiniteScroll
+              [scrollWindow]="false"
+              (scrolled)="onScroll()">
+  <mat-list-item *ngFor="let pokemon of pokemons" (click)="selectPokemon(pokemon)">
+    <img matListAvatar src="../../../assets/img/sprites/{{pokemon.id}}.png">
+    <h3 matLine> {{pokemon.id}}. {{pokemon.name}} </h3>
+  </mat-list-item>
+</mat-nav-list>
